@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="REM — Rare Earth Mineral. A fictional mineral intelligence meme born deep beneath the Earth and brought to Solana.">
+<meta name="theme-color" content="#07100b">
+<title>REM — Rare Earth Mineral</title>
+
+<style>
+:root{
+  --bg:#050806;
+  --bg2:#09120c;
+  --panel:#0b1510;
+  --green:#65ff3f;
+  --green2:#1dcc45;
+  --lime:#b8ff68;
+  --white:#f2fff2;
+  --muted:#91a496;
+  --line:rgba(101,255,63,.18);
+  --glow:rgba(75,255,54,.35);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(41,145,54,.16),transparent 35%),
+    radial-gradient(circle at 10% 40%,rgba(47,255,73,.06),transparent 30%),
+    var(--bg);
+  color:var(--white);
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.035;
+  background-image:
+    linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  backdrop-filter:blur(18px);
+  background:rgba(5,8,6,.76);
+  border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.brand-dot{
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 18px var(--green);
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  color:#b7c6ba;
+  font-size:14px;
+  font-weight:700;
+}
+
+.nav-links a:hover{
+  color:var(--green);
+}
+
+.nav-btn{
+  border:1px solid var(--green);
+  padding:10px 18px;
+  border-radius:9px;
+  color:var(--green);
+  font-weight:800;
+  font-size:13px;
+}
+
+.hero{
+  min-height:100vh;
+  padding:140px 0 90px;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid var(--line);
+  background:rgba(101,255,63,.055);
+  padding:8px 13px;
+  border-radius:999px;
+  color:var(--green);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+
+.badge span{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 10px var(--green);
+}
+
+h1{
+  font-size:clamp(72px,12vw,150px);
+  line-height:.78;
+  letter-spacing:-8px;
+  font-weight:1000;
+  background:linear-gradient(135deg,#ffffff 10%,#b9ff8a 42%,#32ef55 75%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  margin-bottom:30px;
+}
+
+.hero h2{
+  font-size:clamp(25px,3vw,42px);
+  line-height:1.12;
+  max-width:650px;
+  margin-bottom:20px;
+}
+
+.hero h2 span{
+  color:var(--green);
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:570px;
+  font-size:18px;
+  line-height:1.75;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:32px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 22px;
+  border-radius:9px;
+  font-weight:900;
+  font-size:14px;
+  transition:.2s ease;
+}
+
+.btn-primary{
+  background:var(--green);
+  color:#041006;
+  box-shadow:0 0 28px rgba(101,255,63,.2);
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 35px rgba(101,255,63,.4);
+}
+
+.btn-secondary{
+  border:1px solid var(--line);
+  color:#d7e5d9;
+  background:rgba(255,255,255,.025);
+}
+
+.btn-secondary:hover{
+  border-color:var(--green);
+  color:var(--green);
+}
+
+.hero-logo{
+  display:flex;
+  justify-content:center;
+  position:relative;
+}
+
+.logo-orbit{
+  width:min(500px,90vw);
+  aspect-ratio:1;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo-orbit:before{
+  content:"";
+  position:absolute;
+  width:92%;
+  height:92%;
+  border:1px solid rgba(101,255,63,.15);
+  border-radius:50%;
+  box-shadow:0 0 90px rgba(55,255,55,.1);
+}
+
+.logo-orbit:after{
+  content:"";
+  position:absolute;
+  width:108%;
+  height:108%;
+  border:1px dashed rgba(101,255,63,.12);
+  border-radius:50%;
+  animation:spin 25s linear infinite;
+}
+
+.logo-img{
+  width:86%;
+  height:86%;
+  object-fit:contain;
+  position:relative;
+  z-index:2;
+  filter:
+    drop-shadow(0 0 20px rgba(101,255,63,.3))
+    drop-shadow(0 0 65px rgba(101,255,63,.12));
+}
+
+.float-rock{
+  position:absolute;
+  width:45px;
+  height:45px;
+  border-radius:12px 17px 10px 18px;
+  background:linear-gradient(135deg,#9aff60,#123e19);
+  box-shadow:0 0 28px rgba(101,255,63,.25);
+  transform:rotate(25deg);
+  opacity:.8;
+}
+
+.rock1{
+  top:8%;
+  right:4%;
+  animation:float 5s ease-in-out infinite;
+}
+
+.rock2{
+  bottom:12%;
+  left:2%;
+  width:28px;
+  height:28px;
+  animation:float 6s ease-in-out infinite reverse;
+}
+
+section{
+  padding:110px 0;
+  position:relative;
+}
+
+.section-label{
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:15px;
+}
+
+.section-title{
+  font-size:clamp(34px,5vw,62px);
+  line-height:1;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+
+.section-text{
+  color:var(--muted);
+  line-height:1.8;
+  max-width:720px;
+  font-size:17px;
+}
+
+.story{
+  border-top:1px solid var(--line);
+}
+
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+
+.story-card{
+  border:1px solid var(--line);
+  background:
+    radial-gradient(circle at 80% 10%,rgba(101,255,63,.08),transparent 35%),
+    var(--panel);
+  border-radius:20px;
+  padding:36px;
+  position:relative;
+  overflow:hidden;
+}
+
+.story-card:after{
+  content:"REM";
+  position:absolute;
+  right:-20px;
+  bottom:-50px;
+  font-size:160px;
+  font-weight:1000;
+  color:rgba(101,255,63,.025);
+  pointer-events:none;
+}
+
+.quote{
+  font-size:clamp(27px,4vw,48px);
+  line-height:1.08;
+  font-weight:900;
+}
+
+.quote span{
+  color:var(--green);
+}
+
+.miner{
+  border:1px solid var(--line);
+  border-radius:22px;
+  min-height:430px;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(101,255,63,.12),transparent 35%),
+    linear-gradient(145deg,#0c1810,#050806);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.miner-character{
+  width:190px;
+  height:230px;
+  position:relative;
+  filter:drop-shadow(0 0 30px rgba(101,255,63,.25));
+}
+
+.miner-body{
+  position:absolute;
+  width:125px;
+  height:125px;
+  left:32px;
+  bottom:5px;
+  border-radius:44% 44% 28% 28%;
+  background:linear-gradient(145deg,#a9ff63,#247d32 60%,#0a3215);
+  border:2px solid rgba(185,255,104,.6);
+}
+
+.miner-head{
+  position:absolute;
+  width:105px;
+  height:105px;
+  left:42px;
+  top:45px;
+  border-radius:48% 48% 42% 42%;
+  background:linear-gradient(145deg,#d4ff9b,#3e9b3e 65%,#174c20);
+  border:2px solid rgba(185,255,104,.7);
+  z-index:2;
+}
+
+.eye{
+  position:absolute;
+  width:14px;
+  height:20px;
+  background:#071108;
+  border-radius:50%;
+  top:42px;
+  box-shadow:0 0 12px var(--green);
+}
+
+.eye.left{left:28px}
+.eye.right{right:28px}
+
+.mouth{
+  position:absolute;
+  left:37px;
+  top:70px;
+  width:31px;
+  height:13px;
+  border-bottom:4px solid #071108;
+  border-radius:50%;
+}
+
+.helmet{
+  position:absolute;
+  z-index:4;
+  width:132px;
+  height:52px;
+  left:27px;
+  top:22px;
+  background:linear-gradient(#d8ff9e,#59c84b);
+  border-radius:70px 70px 18px 18px;
+  border:2px solid #c8ff8e;
+}
+
+.helmet-light{
+  position:absolute;
+  width:31px;
+  height:25px;
+  left:50px;
+  top:-12px;
+  border-radius:10px 10px 5px 5px;
+  background:#caff87;
+  box-shadow:0 0 25px #72ff45;
+}
+
+.miner-pick{
+  position:absolute;
+  width:125px;
+  height:8px;
+  background:#d8e1d7;
+  transform:rotate(-38deg);
+  right:-55px;
+  top:165px;
+  border-radius:10px;
+}
+
+.miner-pick:before,
+.miner-pick:after{
+  content:"";
+  position:absolute;
+  width:38px;
+  height:8px;
+  background:#d8e1d7;
+  top:-13px;
+  border-radius:8px;
+}
+
+.miner-pick:before{left:0;transform:rotate(-22deg)}
+.miner-pick:after{right:0;transform:rotate(22deg)}
+
+.tokenomics{
+  background:
+    linear-gradient(rgba(101,255,63,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(101,255,63,.025) 1px,transparent 1px);
+  background-size:50px 50px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:45px;
+}
+
+.stat{
+  padding:27px 22px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:rgba(8,17,11,.7);
+}
+
+.stat-value{
+  font-size:25px;
+  font-weight:1000;
+  color:var(--green);
+  margin-bottom:8px;
+}
+
+.stat-label{
+  color:#87988b;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1.4px;
+}
+
+.identity{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:50px;
+}
+
+.identity-card{
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:28px;
+  background:linear-gradient(145deg,rgba(101,255,63,.055),rgba(255,255,255,.015));
+}
+
+.identity-card h3{
+  color:#dffff0;
+  margin-bottom:10px;
+  font-size:19px;
+}
+
+.identity-card p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:14px;
+}
+
+.community{
+  text-align:center;
+}
+
+.community-box{
+  margin:45px auto 0;
+  max-width:900px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:65px 25px;
+  background:
+    radial-gradient(circle at center,rgba(101,255,63,.13),transparent 55%),
+    #08100b;
+}
+
+.community-name{
+  font-size:clamp(55px,10vw,120px);
+  font-weight:1000;
+  letter-spacing:-5px;
+  color:var(--green);
+  text-shadow:0 0 40px rgba(101,255,63,.18);
+}
+
+.community-box p{
+  margin:20px auto 30px;
+  max-width:600px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.roadmap{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:50px;
+}
+
+.phase{
+  padding:27px;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:#08100b;
+}
+
+.phase-number{
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+  margin-bottom:18px;
+}
+
+.phase h3{
+  margin-bottom:11px;
+}
+
+.phase p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:14px;
+}
+
+.launch{
+  text-align:center;
+  padding-bottom:130px;
+}
+
+.launch h2{
+  font-size:clamp(38px,6vw,75px);
+  letter-spacing:-3px;
+  margin-bottom:18px;
+}
+
+.launch h2 span{
+  color:var(--green);
+}
+
+.launch p{
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto 30px;
+  line-height:1.7;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:30px 0;
+  color:#68766c;
+  font-size:12px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+}
+
+.footer-brand{
+  color:#c8d8cb;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(25deg)}
+  50%{transform:translateY(-18px) rotate(38deg)}
+}
+
+@media(max-width:850px){
+  .nav-links{
+    display:none;
+  }
+
+  .hero-grid,
+  .story-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  .hero-logo{
+    order:-1;
+  }
+
+  .logo-orbit{
+    width:min(420px,90vw);
+  }
+
+  .stats,
+  .identity,
+  .roadmap{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:560px){
+  .nav-btn{
+    display:none;
+  }
+
+  h1{
+    font-size:82px;
+    letter-spacing:-5px;
+  }
+
+  section{
+    padding:80px 0;
+  }
+
+  .stats,
+  .identity,
+  .roadmap{
+    grid-template-columns:1fr;
+  }
+
+  .story-card{
+    padding:27px;
+  }
+
+  .community-name{
+    font-size:55px;
+    letter-spacing:-3px;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-dot"></span>
+      REM
+    </a>
+
+    <div class="nav-links">
+      <a href="#story">STORY</a>
+      <a href="#miner">MINER</a>
+      <a href="#token">TOKEN</a>
+      <a href="#community">COMMUNITY</a>
+      <a href="#roadmap">ROADMAP</a>
+    </div>
+
+    <a class="nav-btn" href="#launch">ENTER THE MINE</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="badge">
+        <span></span>
+        SOLANA MEME COIN
+      </div>
+
+      <h1>REM</h1>
+
+      <h2>
+        EARTH HAS MINERALS.<br>
+        <span>NOW IT HAS REM.</span>
+      </h2>
+
+      <p>
+        Rare Earth Mineral — a fictional mineral intelligence meme
+        born deep beneath the Earth and brought to Solana.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#story" class="btn btn-primary">DISCOVER REM</a>
+        <a href="#token" class="btn btn-secondary">VIEW TOKEN</a>
+      </div>
+    </div>
+
+    <div class="hero-logo">
+      <div class="logo-orbit">
+        <img src="REM-logo-website.png" alt="REM Rare Earth Mineral Logo" class="logo-img">
+        <div class="float-rock rock1"></div>
+        <div class="float-rock rock2"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="container story-grid">
+
+    <div>
+      <div class="section-label">THE DISCOVERY</div>
+
+      <h2 class="section-title">
+        Something was<br>
+        hiding underground.
+      </h2>
+
+      <p class="section-text">
+        For billions of years, Earth's minerals remained trapped beneath
+        mountains, oceans and layers of ancient rock. Then something
+        strange happened.
+        <br><br>
+        REM woke up.
+        <br><br>
+        Nobody knows exactly what REM is. Some call it mineral
+        intelligence. Some call it an accident. The miners simply
+        call it REM.
+      </p>
+    </div>
+
+    <div class="story-card">
+      <div class="quote">
+        THE EARTH'S<br>
+        MINERALS HAVE<br>
+        FINALLY ENTERED<br>
+        <span>CRYPTO.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="miner">
+  <div class="container story-grid">
+
+    <div class="miner">
+      <div class="miner-character">
+        <div class="helmet">
+          <div class="helmet-light"></div>
+        </div>
+
+        <div class="miner-head">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+          <div class="mouth"></div>
+        </div>
+
+        <div class="miner-body"></div>
+        <div class="miner-pick"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">THE MASCOT</div>
+
+      <h2 class="section-title">
+        MEET THE<br>
+        MINERAL.
+      </h2>
+
+      <p class="section-text">
+        A strange glowing ore creature wearing a mining helmet.
+        Ancient enough to know everything. Stupid enough to forget
+        where it put the treasure.
+        <br><br>
+        REM is mysterious. REM is powerful. REM is ridiculous.
+        And somehow, REM made it to Solana.
+      </p>
+
+      <div class="identity">
+        <div class="identity-card">
+          <h3>ANCIENT</h3>
+          <p>Born somewhere beneath the oldest rocks on Earth.</p>
+        </div>
+
+        <div class="identity-card">
+          <h3>MYSTERIOUS</h3>
+          <p>Nobody really understands what REM is.</p>
+        </div>
+
+        <div class="identity-card">
+          <h3>STUPID + POWERFUL</h3>
+          <p>A dangerous combination for a mineral.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="token" class="tokenomics">
+  <div class="container">
+
+    <div class="section-label">THE MINERAL DATA</div>
+
+    <h2 class="section-title">REM TOKEN</h2>
+
+    <p class="section-text">
+      Simple mineral. Simple numbers. One billion pieces of underground
+      intelligence entering the Solana ecosystem.
+    </p>
+
+    <div class="stats">
+
+      <div class="stat">
+        <div class="stat-value">REM</div>
+        <div class="stat-label">Ticker</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-value">1B</div>
+        <div class="stat-label">Total Supply</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Decimals</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-value">SOLANA</div>
+        <div class="stat-label">Blockchain</div>
+      </div>
+
+    </div>
+
+    <div class="identity">
+
+      <div class="identity-card">
+        <h3>NAME</h3>
+        <p>Rare Earth Mineral</p>
+      </div>
+
+      <div class="identity-card">
+        <h3>TYPE</h3>
+        <p>Meme Coin</p>
+      </div>
+
+      <div class="identity-card">
+        <h3>STATUS</h3>
+        <p>Concept / Pre-launch</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="community" class="community">
+  <div class="container">
+
+    <div class="section-label">THE COMMUNITY</div>
+
+    <h2 class="section-title">WHO FINDS REM?</h2>
+
+    <div class="community-box">
+
+      <div class="community-name">THE MINERS</div>
+
+      <p>
+        The people digging deeper. The people chasing the glow.
+        The people who somehow believe a strange underground mineral
+        can take over Solana.
+      </p>
+
+      <a href="#launch" class="btn btn-primary">JOIN THE MINERS</a>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="container">
+
+    <div class="section-label">THE MINING PLAN</div>
+
+    <h2 class="section-title">FROM ROCK TO SOLANA.</h2>
+
+    <p class="section-text">
+      Every mineral needs a journey. REM's journey starts underground.
+    </p>
+
+    <div class="roadmap">
+
+      <div class="phase">
+        <div class="phase-number">PHASE 01</div>
+        <h3>THE DISCOVERY</h3>
+        <p>
+          REM is discovered deep beneath the Earth.
+          Nobody knows what it is.
+        </p>
+      </div>
+
+      <div class="phase">
+        <div class="phase-number">PHASE 02</div>
+        <h3>THE EXTRACTION</h3>
+        <p>
+          The miners bring REM to the surface and
+          discover something glowing inside.
+        </p>
+      </div>
+
+      <div class="phase">
+        <div class="phase-number">PHASE 03</div>
+        <h3>THE LAUNCH</h3>
+        <p>
+          REM leaves the Earth and enters the
+          Solana blockchain.
+        </p>
+      </div>
+
+      <div class="phase">
+        <div class="phase-number">PHASE 04</div>
+        <h3>THE MINERS</h3>
+        <p>
+          The community begins the search for
+          the next REM discovery.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="launch" class="launch">
+  <div class="container">
+
+    <div class="section-label">PRE-LAUNCH</div>
+
+    <h2>
+      THE MINERAL<br>
+      <span>IS WAKING UP.</span>
+    </h2>
+
+    <p>
+      REM is preparing to emerge from beneath the Earth
+      and enter the Solana universe.
+    </p>
+
+    <div class="hero-buttons" style="justify-content:center;">
+      <a href="#top" class="btn btn-primary">BACK TO SURFACE</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">REM — RARE EARTH MINERAL</div>
+    <div>THE EARTH HAS MINERALS. NOW IT HAS REM.</div>
+    <div>SOLANA · THE MINERS</div>
+  </div>
+</footer>
+
+</body>
+</html>
